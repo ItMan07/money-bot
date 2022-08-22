@@ -2,7 +2,7 @@ from loader import *
 from utils import is_admin
 
 
-@bot.message_handler(commands=['edit'])
+@bot.message_handler(commands=['edit_money'])
 def cmd_edit_money(message):
     if is_admin(message.from_user.id):
         msg = bot.send_message(message.chat.id, '❇ Введите username: ', parse_mode='html')

@@ -6,7 +6,7 @@ BOT_TOKEN = "5106190156:AAGQQdV5QU9MLRG2B4WRggzReE4WJlIxRL8"
 
 ADMIN_ID = 1069565512
 
-APP_URL = "https://money-bot-v2.herokuapp.com/" + BOT_TOKEN
+APP_URL = "https://telegram-money-bot.herokuapp.com/" + BOT_TOKEN
 
 DB_URI = "postgres://wcvxulvlyzfexk:27aa3e2d8c399f749935ec72cf154023246d469fae9df4c66e5e3f9f2371baa1" \
          "@ec2-34-253-119-24.eu-west-1.compute.amazonaws.com:5432/d62jvfrevnv5j0"

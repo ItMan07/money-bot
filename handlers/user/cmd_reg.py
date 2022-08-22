@@ -32,7 +32,6 @@ def cmd_reg2(message):
                      default_admin))
 
         db.commit()
-        db.close()
         bot.send_message(message.chat.id, '✅ Успешно! Вы зарегистрированы! \n\n💰 Ваш начальный баланс: 5000',
                          parse_mode='html')
     else:

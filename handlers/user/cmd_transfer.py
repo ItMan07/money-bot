@@ -64,7 +64,6 @@ def cmd_transfer3(message):
             db.commit()
             sql.execute(f"UPDATE users SET money = {res2} WHERE username = '{recipient}'")
             db.commit()
-            db.close()
 
             sec = time.time()
             sec += 10800

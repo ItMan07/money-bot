@@ -44,7 +44,6 @@ def cmd_casino2(message):
                 cash = cash - stavka
                 sql.execute(f"UPDATE users SET money = {cash} WHERE id = {id}")
                 db.commit()
-                db.close()
                 bot.send_message(message.chat.id, f'😢 К сожалению вы <b>проиграли! \n\n💰 Ваш баланс: {cash}</b>',
                                  parse_mode='html')
 
