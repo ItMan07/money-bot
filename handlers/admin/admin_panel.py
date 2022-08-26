@@ -5,7 +5,7 @@ from utils import is_admin
 @bot.message_handler(commands=['admin_panel'])
 def cmd_admin_panel(message):
     if is_admin(message.from_user.id):
-        admin_panel = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
+        admin_panel = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
         item_start = types.KeyboardButton('/start')
         item_admins = types.KeyboardButton('/set_admin')
         item_balance = types.KeyboardButton('/edit_balance')

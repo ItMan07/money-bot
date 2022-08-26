@@ -34,7 +34,7 @@ def cmd_casino2(message):
         elif min_stavka <= stavka <= cash:
             bot.send_message(message.chat.id, '✅ Отлично ставка сделана! \n\n🎰 Крутим барабан...', parse_mode='html')
 
-            if chance in chanseCasino:
+            if chanceGenerate():
                 cash = cash + stavka * 2
                 sql.execute(f"UPDATE users SET money = {cash} WHERE id = {id}")
                 db.commit()

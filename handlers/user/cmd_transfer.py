@@ -20,14 +20,11 @@ def cmd_transfer2(message):
         sql.execute(f"SELECT id FROM users WHERE username = '{recipient}'")
         recipient_id = sql.fetchone()[0]
 
-        if recipient is None:
+        if recipient_id is None:
             bot.send_message(message.chat.id, '⛔ Ошибка! <b>Пользователся с таким username не существует!</b>',
                              parse_mode='html')
         else:
-            sql.execute(f"SELECT id FROM users WHERE id = {message.from_user.id}")
-            sender_id = sql.fetchone()[0]
-
-            if recipient_id == sender_id:
+            if recipient_id == message.from_user.id:
                 bot.send_message(message.chat.id, '⛔ Ошибка! Вы не можете отправить деньги самому себе',
                                  parse_mode='html')
             else:

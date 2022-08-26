@@ -5,7 +5,8 @@ from utils import is_admin
 @bot.message_handler(commands=['set_admin'])
 def cmd_set_admin(message):
     if is_admin(message.from_user.id):
-        msg = bot.send_message(message.chat.id, '❇ Введите username: ', parse_mode='html')
+        msg = bot.send_message(message.chat.id, '❇ Введите <b><u>username</u></b>: \n\n'
+                                                '(0 - если хотите отменить)', parse_mode='html')
         bot.register_next_step_handler(msg, set_admin2)
     else:
         bot.send_message(ADMIN_ID, f"⚠️  ⚠️  ⚠️ \n"
@@ -17,13 +18,17 @@ def cmd_set_admin(message):
 def set_admin2(message):
     global username_red
     username_red = message.text
+    username_red = username_red.lower()
 
-    markup_inline = types.InlineKeyboardMarkup()
-    item_yes = types.InlineKeyboardButton(text='✅', callback_data='1')
-    item_no = types.InlineKeyboardButton(text='❌', callback_data='0')
+    if username_red == '0':
+        bot.send_message(message.chat.id, '⛔ Операция отменена')
 
-    markup_inline.add(item_yes, item_no)
-    bot.send_message(message.chat.id, 'Подтвердите операцию:', reply_markup=markup_inline)
+    else:
+        markup_inline = types.InlineKeyboardMarkup()
+        item_yes = types.InlineKeyboardButton(text='✅', callback_data='1')
+        item_no = types.InlineKeyboardButton(text='❌', callback_data='0')
+        markup_inline.add(item_yes, item_no)
+        bot.send_message(message.chat.id, 'Подтвердите операцию:', reply_markup=markup_inline)
 
 
 @bot.callback_query_handler(func=lambda call: True)

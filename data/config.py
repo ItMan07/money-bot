@@ -18,8 +18,17 @@ default_admin = False           # выдавать админку при рег�
 
 # ========================== НАСТРОЙКИ КАЗИНО ============================
 
-chance = randint(1, 8)
 chanseCasino = [1, 2, 3]
-min_stavka = 100                # минимальная ставка
+min_stavka = 100   # минимальная ставка
+
+
+def chanceGenerate():
+    global chanseCasino
+    chance = randint(1, 8)
+    if chance in chanseCasino:
+        return True
+    else:
+        return False
+
 
 # ========================================================================
